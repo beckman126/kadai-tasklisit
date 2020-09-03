@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  
   def index
     @tasks = Task.all
   end
@@ -12,6 +13,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    @task = Task.new(task_params)
     if @task.save
       flash[:success] = 'Taskが正常に作成されました'
       redirect_to @task
@@ -48,7 +50,7 @@ class TasksController < ApplicationController
   end
   
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :status)
   end
 
 end
