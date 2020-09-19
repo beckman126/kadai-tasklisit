@@ -1,5 +1,16 @@
-<% if logged_in? %>
-  <%= render 'tasks/logged_in' %>
+<% if current_user %>
+   <h1>Task List</h1>
+     <h2>タスク一覧</h2>
+
+      <ul>
+       <% @tasks.each do |task| %>
+         <li><%= link_to task.id, task %> : <%= task.content %> &gt; <%= task.status %></li>
+       <% end %>
+      </ul>
+       <%= link_to '新しいタスクの作成', new_task_path %>
+       <%= link_to "ログアウト", logout_path, method: :delete %>
 <% else %>
-  <%= render 'tasks/not_logged_in' %>
+    <p>タスクの管理ができるアプリです。ユーザ登録後にログインをしてください。</p>
+      <%= link_to "ユーザ登録", signup_path%>
+      <%= link_to "ログイン", login_path%>
 <% end %>

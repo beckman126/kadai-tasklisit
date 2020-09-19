@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 include SessionsHelper
 
 private
-    def logged_in_user
+    def require_user_logged_in
       unless logged_in?
         redirect_to login_url
       end
