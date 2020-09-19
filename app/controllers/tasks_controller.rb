@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:edit, :update, :destroy]
   before_action :current_user, only:[:new, :update, :destroy]
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
@@ -12,10 +12,11 @@ class TasksController < ApplicationController
   end
 
   def show
+     @task = current_user.tasks.find_by(params[:id])
   end
 
   def new
-    @task = current_user.tasks.new
+    @task = Task.new
   end
 
   def create
