@@ -1,4 +1,5 @@
 <h1>ユーザ登録</h1>
+<h2>以下のフォーム(Name,Email,Password,Confirmation)を入力してユーザ登録をしてください。</h2>
 
  <%= form_with(model: @user, local: true) do |f| %>
  　<%= render 'layouts/error_messages', model: f.object %>
@@ -17,6 +18,6 @@
  
  <%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
 
- <%= link_to 'トップに戻る', tasks_path %>
+ <%= link_to 'ログイン画面', tasks_path %>
 
 <% end %>
